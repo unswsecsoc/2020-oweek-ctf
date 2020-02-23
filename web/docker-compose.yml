@@ -1,0 +1,60 @@
+version: '2.4'
+services:
+  traefik:
+    image: traefik:v1.7 # The official Traefik docker image
+    command: --docker # Enables the web UI and tells Traefik to listen to docker
+    ports:
+      - "80:80"     # The HTTP port
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock # So that Traefik can listen to the Docker events
+    restart: unless-stopped
+  iicsa:
+    build: ./iicsa
+    expose:
+      - "80"
+    labels:
+      - "traefik.frontend.rule=Host:iicsa.web.ctf.unswsecurity.com"
+    cpus: 0.5
+    mem_limit: 256M
+    pids_limit: 64
+    restart: unless-stopped
+  lightly_salted:
+    build: ./lightly_salted
+    expose:
+      - "80"
+    labels:
+      - "traefik.frontend.rule=Host:lightly-salted.web.ctf.unswsecurity.com"
+    cpus: 0.5
+    mem_limit: 512M
+    pids_limit: 64
+    restart: unless-stopped
+  simple_website:
+    build: ./simple_website
+    expose:
+      - "8000"
+    labels:
+      - "traefik.frontend.rule=Host:simple-website.web.ctf.unswsecurity.com"
+    cpus: 0.5
+    mem_limit: 512M
+    pids_limit: 32
+    restart: unless-stopped
+  simple_login:
+    build: ./simple_login
+    expose:
+      - "8000"
+    labels:
+      - "traefik.frontend.rule=Host:simple-login.web.ctf.unswsecurity.com"
+    cpus: 0.5
+    mem_limit: 512M
+    pids_limit: 8
+    restart: unless-stopped
+  another_simple_login:
+    build: ./another_simple_login
+    expose:
+      - "8000"
+    labels:
+      - "traefik.frontend.rule=Host:another-simple-login.web.ctf.unswsecurity.com"
+    cpus: 0.5
+    mem_limit: 512M
+    pids_limit: 8
+    restart: unless-stopped

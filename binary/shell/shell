@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "WARNING: Intrusion detected. Evicting all processes soon."
+timeout -s SIGKILL 60s /bin/sh

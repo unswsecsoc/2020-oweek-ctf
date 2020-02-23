@@ -1,0 +1,26 @@
+version: '2.4'
+services:
+  buf:
+    build: ./buf
+    ports:
+      - "5001:9999"
+    cpus: 0.25
+    mem_limit: 128M
+    pids_limit: 64
+    restart: unless-stopped
+  shell:
+    build: ./shell
+    ports:
+      - "5002:9999"
+    cpus: 0.25
+    mem_limit: 128M
+    pids_limit: 64
+    restart: unless-stopped
+  maths:
+    build: ./maths
+    ports:
+      - "5003:9999"
+    cpus: 0.25
+    mem_limit: 128M
+    pids_limit: 64
+    restart: unless-stopped

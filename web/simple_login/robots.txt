@@ -1,0 +1,8 @@
+# Hi there ...
+# This file is to make sure bots don't come crawling on my website
+# That being said ... you naughty are here for sum thin fishey ey?
+
+Disallow: /*
+
+User-agent: admin
+Allow: /admin_stuff

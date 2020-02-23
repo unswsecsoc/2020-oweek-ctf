@@ -1,0 +1,20 @@
+p.greet {
+  color: navy;
+	font-family: verdana;
+	font-size: 20px;
+}
+
+p.prompt {
+	color: black;
+	font-family: verdana;
+	font-size: 20px;
+}
+
+div {
+  margin-top: 100px;
+	margin-bottom: 100px;
+	margin-right: 150px;
+	margin-left: 80px;
+}
+/* Hmm ... need to learn how to beautify stuff 
+ 1lding_W  ... flag 2/4 */

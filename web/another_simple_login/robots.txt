@@ -1,0 +1,3 @@
+# Only admin is true! But what is true? What can be TRUE?
+
+Disallow: /admin_stuff

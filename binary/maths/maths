@@ -1,0 +1,86 @@
+#!/usr/bin/python3
+
+import signal
+import functools
+import multiprocessing
+import time
+import random
+import sys
+
+TIMEOUT = 60
+FLAG = "OWEEK{d0nt_f0rget_ur_meNta1_maffs}"
+
+print = functools.partial(print, flush=True)
+
+# Main
+def main():
+    print("How good are you at maths?")
+    print("This quiz will let you find out.")
+    print("Answer all the questions and you shall get a flag")
+    print("Answer one of them wrong and i will die")
+    print(f"Your {TIMEOUT} seconds starts now!")
+    print()
+
+    try:
+        a = random.randint(1,100)
+        b = random.randint(1,100)
+        if a + b == int(input(f"Whats {a} + {b}? ")):
+            print("Correct!")
+        else:
+            print("Wrong :(")
+            raise Exception
+
+        a = random.randint(1, 2**7)
+        if int(input(f"What's {a} in hexadecimal? "), 16) == a:
+            print("Correct!")
+        else:
+            print("Wrong :(")
+            raise Exception
+
+        a = random.randint(1, 2**7)
+        if int(input(f"What's {'{0:08b}'.format(a)} in decimal? ")) == a:
+            print("Correct!")
+        else:
+            print("Wrong :(")
+            raise Exception
+
+        a = random.randint(1, 2**7)
+        if int(input(f"What's 0b{'{0:08b}'.format(a)} in hexadecimal? "), 16) == a:
+            print("Correct!")
+        else:
+            print("Wrong :(")
+            raise Exception
+
+        a = random.randint(1, 2**7)
+        if int(input(f"What's {hex(a)} in binary? "), 2) == a:
+            print("Correct!")
+        else:
+            print("Wrong :(")
+            raise Exception
+
+        a = random.randint(1, 2**7)
+        b = random.randint(1, 2**7)
+        if int(input(f"What's {hex(a)} + 0b{'{0:08b}'.format(b)} in decimal? ")) == a + b:
+            print("Correct!")
+        else:
+            print("Wrong :(")
+            raise Exception
+
+
+        print("You win! Here's the prize")
+        print(FLAG)
+    except:
+        print("You entered something that I don't like :(")
+
+    print("Goodbye!")
+
+if __name__ == '__main__':
+    # Start foo as a process
+
+    def interrupted(signum, frame):
+        print("Time's up!")
+        sys.exit(0)
+    signal.signal(signal.SIGALRM, interrupted)
+
+    signal.alarm(TIMEOUT)
+    main()
