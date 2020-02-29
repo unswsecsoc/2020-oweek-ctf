@@ -5,6 +5,8 @@ Repository for challenges in the 2020 o-week ctf. Source code and everything inc
 
 If you want to contribute to the writeups, feel free to make a pull request here.
 
+We hope you had fun participating in this year's o-week CTF! Stay tuned for further updates.
+
 ## Deployment
 Use the Container Optimzed OS image on Google Cloud. Also make sure to enable the necessary ports.
 

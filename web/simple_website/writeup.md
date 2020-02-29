@@ -1,8 +1,6 @@
-### NOTES ###
-Challenge runs on `localhost:8000`, change port (or host) as required
-There is *Dockerfile* to copy files and run NodeJS with `npm`
+Writeup: Simple Website
+=======================
 
-### HOW TO SOLVE ###
 >>> flag[0:8]   part 1
 'OWEEK{bu'   : open "index.html" source
 >>> flag[8:16]  part 2
